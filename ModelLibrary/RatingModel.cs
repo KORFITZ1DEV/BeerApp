@@ -1,10 +1,14 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace ModelLibrary
 
 public class RatingModel
 {
     public Guid RatingID { get; set; }
-    public float RatingScore { get; set; }
+
+    [Column(TypeName = "decimal(6, 2)")]
+    public decimal RatingScore { get; set; }
 
     public BeerModel Beer { get; set; }
 
