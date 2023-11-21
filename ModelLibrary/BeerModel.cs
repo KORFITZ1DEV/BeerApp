@@ -47,10 +47,12 @@ namespace ModelLibrary
         OLD_ALE
     }
 
+    [PrimaryKey("BeerID")]
+    [Table("BEERS")]
     public class BeerModel
     {
         public Guid BeerID { get; set; }
-        public string BeerName { get; set; }
+        public string BeerName { get; set; } = string.Empty;
 
         public BeerType BeerType { get; set; }
         public AleSubType? AleSubType { get; set; }
@@ -58,8 +60,8 @@ namespace ModelLibrary
         public SpecialtyHybridSubType? SpecialtyHybridSubType { get; set; }
         public StrongAleSubType? StrongAleSubType { get; set; }
 
-        public string Brewery { get; set; }
-        public List<RatingModel> Ratings { get; set; }
+        public string Brewery { get; set; } = string.Empty;
+        public List<RatingModel>? Ratings { get; set; }
 
         private BeerModel(Guid beerId, string beerName, BeerType beerType)
         {
