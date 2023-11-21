@@ -1,5 +1,5 @@
-// using BusinessLogic;
-// using BusinessLogic.Extensions;
+using BusinessLogic;
+using BusinessLogic.Extensions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using DataAccessLibrary.Extensions;
@@ -13,7 +13,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddDataAccessLayer(builder.Configuration);
-//builder.Services.AddBusinessLogicLayer(builder.Configuration);
+builder.Services.AddBusinessLogicLayer(builder.Configuration);
 
 var app = builder.Build();
 

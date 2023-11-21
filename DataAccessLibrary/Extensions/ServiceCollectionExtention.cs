@@ -15,7 +15,6 @@ public static class ServiceCollectionExtention
         services.AddDbContext<DataContext>(options =>
         {
             options.UseNpgsql(configuration.GetConnectionString("MyPostgresConnection"));
-            options.EnableSensitiveDataLogging();
         });
 
         services.AddTransient<IModelContext<BeerModel>, BeerContext>();
