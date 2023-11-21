@@ -9,8 +9,14 @@ public class DataContext : DbContext
     {
     }
 
+
     public DbSet<BeerModel> Beers => Set<BeerModel>();
     public DbSet<BeerLoverModel> BeerLovers => Set<BeerLoverModel>();
     public DbSet<BeerGroupModel> BeerGroups => Set<BeerGroupModel>();
     public DbSet<RatingModel> Ratings => Set<RatingModel>();
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+
+    }
 }
