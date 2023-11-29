@@ -63,6 +63,10 @@ namespace ModelLibrary
         public string Brewery { get; set; } = string.Empty;
         public List<RatingModel>? Ratings { get; set; }
 
+        public BeerModel()
+        {
+            BeerID = Guid.NewGuid();
+        }
         public BeerModel(Guid beerId, string beerName, BeerType beerType)
         {
             BeerID = beerId;

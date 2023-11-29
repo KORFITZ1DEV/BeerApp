@@ -20,6 +20,10 @@ namespace ModelLibrary
 
         public string? Review { get; set; } = string.Empty;
 
+        public RatingModel()
+        {
+            RatingID = Guid.NewGuid();
+        }
 
     }
 }
