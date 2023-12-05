@@ -113,9 +113,10 @@ namespace DataAccessLibrary.Migrations
                 columns: new[] { "BeerGroupID", "GroupName" },
                 values: new object[,]
                 {
-                    { new Guid("1bd214e5-2246-4472-afc8-bf11d96837dd"), "Ale Beer Enthusiasts" },
-                    { new Guid("ab7c937b-32a4-401d-a306-a0014eb08179"), "Stout Beer Enthusiasts" },
-                    { new Guid("c2b4fab6-24a5-4e5b-b5f9-97110595cfb8"), "Craft Beer Enthusiasts" }
+                    { new Guid("39377e08-cea2-4c12-84f4-619db5de4971"), "IPA Beer Enthusiasts" },
+                    { new Guid("3d25023b-a15a-4efe-8125-000c55af99e9"), "Craft Beer Enthusiasts" },
+                    { new Guid("8b462ca4-15ee-4cfe-bb85-86324e572aa6"), "Ale Beer Enthusiasts" },
+                    { new Guid("b63aa8ca-2e54-44e8-8750-cfd4de6b95fb"), "Stout Beer Enthusiasts" }
                 });
 
             migrationBuilder.InsertData(
@@ -123,15 +124,15 @@ namespace DataAccessLibrary.Migrations
                 columns: new[] { "BeerLoverID", "BeerLoverEmail", "BeerLoverName" },
                 values: new object[,]
                 {
-                    { new Guid("04de221c-6523-4f80-bf06-d3e773ed72b5"), "Dask@example.com", "Dask Doe" },
-                    { new Guid("7be021ff-c7f2-4fa6-b23a-1783b1984375"), "Casper@example.com", "Casper Doe" },
-                    { new Guid("8aebcbbf-a91f-48c9-9775-041592f2afc4"), "Joson@example.com", "Joson Doe" },
-                    { new Guid("ac088d0f-2f64-405f-ae65-d5500704cfe9"), "Pop@example.com", "Pop Doe" },
-                    { new Guid("b1e27ee7-3026-4370-8ea5-a1cdd77df599"), "Lope@example.com", "Lope Doe" },
-                    { new Guid("c7e1f65d-dd75-4ae6-a92c-677bd8ef44b6"), "john@example.com", "John Doe" },
-                    { new Guid("e005ab7e-d718-452c-8c9d-5055393889c2"), "Peter@example.com", "Peter Doe" },
-                    { new Guid("e1604353-59c9-43c8-9902-a43fbbf9593a"), "Gope@example.com", "Gope Doe" },
-                    { new Guid("f83c98e6-01e8-4d88-a9ba-3fbc67f4b6c9"), "Jason@example.com", "Jason Doe" }
+                    { new Guid("19021e3f-42fe-4b83-b20a-38c704f2674c"), "john@example.com", "John Doe" },
+                    { new Guid("1de9a470-c144-4424-8c19-4091c5233855"), "Peter@example.com", "Peter Doe" },
+                    { new Guid("1f44fec8-33fe-4e10-814a-9a6299cec163"), "Lope@example.com", "Lope Doe" },
+                    { new Guid("4b03a19c-b47d-48fb-9269-60829d75f59f"), "Pop@example.com", "Pop Doe" },
+                    { new Guid("c70def6d-5ae1-482a-8b9a-ab8816cd547e"), "Jason@example.com", "Jason Doe" },
+                    { new Guid("d251288e-3c3e-4b9d-9056-57db02f1bce0"), "Joson@example.com", "Joson Doe" },
+                    { new Guid("d5fa6e8a-35e6-4db8-a6ff-5db22cb58f11"), "Gope@example.com", "Gope Doe" },
+                    { new Guid("d6f14cf7-cdd8-4c52-961e-933aa3e219dc"), "Casper@example.com", "Casper Doe" },
+                    { new Guid("db41cd04-5b34-492e-9537-7ac5e4d02c3a"), "Dask@example.com", "Dask Doe" }
                 });
 
             migrationBuilder.InsertData(
@@ -139,12 +140,12 @@ namespace DataAccessLibrary.Migrations
                 columns: new[] { "BeerID", "AleSubType", "BeerName", "BeerType", "Brewery", "LagerSubType", "SpecialtyHybridSubType", "StrongAleSubType" },
                 values: new object[,]
                 {
-                    { new Guid("26c33056-6bdf-4a60-8f91-1765bfa3c055"), 1, "IPA london", 0, "London Brewing Co", null, null, null },
-                    { new Guid("7ce0c3c9-e7f9-434d-a385-441fd0316685"), 0, "Geuss new", 0, "Geuss Brewery", null, null, null },
-                    { new Guid("8105e013-fafc-401f-9c7a-4243b84e04cb"), null, "Carlsberg pilsner", 1, "Carlsberg Brewery", 0, null, null },
-                    { new Guid("81391768-6642-46cb-bcaf-674bdc535c3d"), null, "Anakisten bluberry", 2, "Anakisten Brewing", null, 0, null },
-                    { new Guid("92f8265d-afea-457e-a67e-b8d9a2fa392f"), null, "Trapist lakrids", 3, "Trapist Brews", null, null, 0 },
-                    { new Guid("f6b4825e-a1fc-45e8-8fb8-c56064ee25a4"), null, "Grimberger double amber", 1, "Grimberger Brewery", 3, null, null }
+                    { new Guid("5d44686e-a27d-4b87-a670-a76823fe1105"), 1, "IPA london", 0, "London Brewing Co", null, null, null },
+                    { new Guid("6ee23fe6-e841-48d4-bd62-353f9caefd9c"), null, "Carlsberg pilsner", 1, "Carlsberg Brewery", 0, null, null },
+                    { new Guid("b3b8f151-77be-4911-b8dd-0c9a4bf622a1"), null, "Trapist lakrids", 3, "Trapist Brews", null, null, 0 },
+                    { new Guid("c9811370-75df-4c56-9c26-c18bf8e11db4"), null, "Grimberger double amber", 1, "Grimberger Brewery", 3, null, null },
+                    { new Guid("e4c25d0d-4d03-4815-82b7-5b85873c7432"), 0, "Geuss new", 0, "Geuss Brewery", null, null, null },
+                    { new Guid("f689afb8-4862-4aa9-8ed9-0c8f263b97bd"), null, "Anakisten bluberry", 2, "Anakisten Brewing", null, 0, null }
                 });
 
             migrationBuilder.CreateIndex(

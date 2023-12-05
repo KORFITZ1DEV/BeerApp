@@ -32,7 +32,8 @@ public class DataContext : DbContext
         modelBuilder.Entity<BeerGroupModel>().HasData(
             new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Craft Beer Enthusiasts" },
             new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Ale Beer Enthusiasts" },
-            new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Stout Beer Enthusiasts" }
+            new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Stout Beer Enthusiasts" },
+            new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "IPA Beer Enthusiasts" }
             // Add other beer groups as needed
         );
 
