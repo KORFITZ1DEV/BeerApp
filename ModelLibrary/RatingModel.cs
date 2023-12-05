@@ -9,8 +9,7 @@ namespace ModelLibrary
     {
         public Guid RatingID { get; set; }
 
-        [Column(TypeName = "decimal(6, 2)")]
-        public decimal RatingScore { get; set; }
+        public double RatingScore { get; set; }
 
         public BeerModel Beer { get; set; } = null!;
 

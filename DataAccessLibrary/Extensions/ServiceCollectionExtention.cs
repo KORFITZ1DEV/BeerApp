@@ -14,7 +14,7 @@ public static class ServiceCollectionExtention
     {
         services.AddDbContext<DataContext>(options =>
         {
-            options.UseNpgsql(configuration.GetConnectionString("MyPostgresConnection"));
+            options.UseNpgsql("host = localhost; port = 5432; Database = beerdata; Username = caspermortensen; password = beer;");
         });
 
         services.AddTransient<IModelContext<BeerModel>, BeerContext>();
