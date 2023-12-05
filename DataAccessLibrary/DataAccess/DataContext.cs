@@ -48,11 +48,6 @@ public class DataContext : DbContext
             new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Carlsberg pilsner", BeerType = BeerType.LAGER, LagerSubType = LagerSubType.PILSNER, Brewery = "Carlsberg Brewery" }
         // Add other beers as needed
         );
-
-        // modelBuilder.Entity<RatingModel>().HasData(
-        //     new RatingModel { RatingID = Guid.NewGuid(), RatingScore = 4.5, Beer = new BeerModel { BeerID = Guid.NewGuid(), BeerName = "IPA TEST", BeerType = BeerType.ALE, AleSubType = AleSubType.INDIA_PALE_ALE, Brewery = "TEST Brewing Co" }, Taster = new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Test Doe", BeerLoverEmail = "test@example.com" }, RatingDate = DateTime.Now }
-        // // Add other ratings as needed
-        // );
     }
 
 }
