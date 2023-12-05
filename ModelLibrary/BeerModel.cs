@@ -62,44 +62,6 @@ namespace ModelLibrary
 
         public string Brewery { get; set; } = string.Empty;
         public List<RatingModel>? Ratings { get; set; }
-
-        public BeerModel()
-        {
-            BeerID = Guid.NewGuid();
-        }
-        public BeerModel(Guid beerId, string beerName, BeerType beerType)
-        {
-            BeerID = beerId;
-            BeerName = beerName;
-            BeerType = beerType;
-        }
-
-        public static BeerModel CreateAle(Guid beerId, string beerName, AleSubType aleSubType)
-        {
-            BeerModel beer = new BeerModel(beerId, beerName, BeerType.ALE);
-            beer.AleSubType = aleSubType;
-            return beer;
-        }
-
-        public static BeerModel CreateLager(Guid beerId, string beerName, LagerSubType lagerSubType)
-        {
-            BeerModel beer = new BeerModel(beerId, beerName, BeerType.LAGER);
-            beer.LagerSubType = lagerSubType;
-            return beer;
-        }
-
-        public static BeerModel CreateSpecialtyHybrid(Guid beerId, string beerName, SpecialtyHybridSubType specialtyHybridSubType)
-        {
-            BeerModel beer = new BeerModel(beerId, beerName, BeerType.SPECIALTY_HYBRID);
-            beer.SpecialtyHybridSubType = specialtyHybridSubType;
-            return beer;
-        }
-
-        public static BeerModel CreateStrongAle(Guid beerId, string beerName, StrongAleSubType strongAleSubType)
-        {
-            BeerModel beer = new BeerModel(beerId, beerName, BeerType.STRONG_ALE);
-            beer.StrongAleSubType = strongAleSubType;
-            return beer;
-        }
     }
 }
+

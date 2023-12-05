@@ -10,10 +10,5 @@ namespace ModelLibrary
         public Guid BeerGroupID { get; set; }
         public string GroupName { get; set; } = string.Empty;
         public List<BeerLoverModel> GroupMembers { get; set; } = new();
-
-        public BeerGroupModel()
-        {
-            BeerGroupID = Guid.NewGuid();
-        }
     }
 }

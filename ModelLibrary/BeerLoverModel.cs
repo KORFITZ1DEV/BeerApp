@@ -12,11 +12,6 @@ namespace ModelLibrary
         public string BeerLoverEmail { get; set; } = string.Empty;
         public List<BeerGroupModel>? BeerGroups { get; set; }
         public List<RatingModel>? rating { get; set; }
-
-        public BeerLoverModel()
-        {
-            BeerLoverID = Guid.NewGuid();
-        }
     }
 
 }
