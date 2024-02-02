@@ -1,18 +1,23 @@
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace ModelLibrary
-
-public class RatingModel
 {
-    public Guid RatingID { get; set; }
-    public float RatingScore { get; set; }
+    [PrimaryKey("RatingID")]
+    [Table("RATINGS")]
+    public class RatingModel
+    {
+        public Guid RatingID { get; set; }
 
-    public BeerModel Beer { get; set; }
+        public double RatingScore { get; set; }
 
-    public BeerLoverModel Taster { get; set; }
+        public BeerModel Beer { get; set; } = null!;
 
-    public DateTime RatingDate { get; set; }
+        public BeerLoverModel Taster { get; set; } = null!;
 
-    public string? Review { get; set; }
+        public DateTime RatingDate { get; set; }
 
+        public string? Review { get; set; } = string.Empty;
 
+    }
 }

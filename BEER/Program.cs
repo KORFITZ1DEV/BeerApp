@@ -1,6 +1,9 @@
+using BusinessLogic;
+using BusinessLogic.Extensions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-using BEER.Data;
+using DataAccessLibrary.Extensions;
+using BEER.Data; //delete later
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+
+builder.Services.AddDataAccessLayer(builder.Configuration);
+builder.Services.AddBusinessLogicLayer(builder.Configuration);
 
 var app = builder.Build();
 
@@ -21,6 +27,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+
+
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
