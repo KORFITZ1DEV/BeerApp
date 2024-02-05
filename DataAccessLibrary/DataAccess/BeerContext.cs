@@ -29,23 +29,21 @@ public class BeerContext : ModelContext<BeerModel>
     {
         Context.Beers.Add(beer);
         await Context.SaveChangesAsync();
+        Context.ChangeTracker.Clear();
     }
 
     public override async Task Update(BeerModel beer)
     {
-        //     BeerModel? match = await GetOneWhere(c => c.EmailAddress.Equals(customer.EmailAddress));
-        //     match!.FirstName = customer.FirstName;
-        //     match.LastName = customer.LastName;
-        //     match.EmailAddress = customer.EmailAddress;
-        //     match.PhoneNumber = customer.PhoneNumber;
-        //     match.IsFlagged = customer.IsFlagged;
-        //     await Context.SaveChangesAsync();
-        await Task.CompletedTask; //defualt before implementation
+        Context.Beers.Update(beer);
+        await Context.SaveChangesAsync();
+        Context.ChangeTracker.Clear();
+
     }
 
     public override async Task Delete(BeerModel beer)
     {
         Context.Beers.Remove(beer);
         await Context.SaveChangesAsync();
+        Context.ChangeTracker.Clear();
     }
 }

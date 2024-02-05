@@ -29,25 +29,22 @@ public class RatingContext : ModelContext<RatingModel>
     {
         Context.Ratings.Add(rating);
         await Context.SaveChangesAsync();
+        Context.ChangeTracker.Clear();
 
     }
 
     public override async Task Update(RatingModel rating)
     {
-        //     BeerModel? match = await GetOneWhere(c => c.EmailAddress.Equals(customer.EmailAddress));
-        //     match!.FirstName = customer.FirstName;
-        //     match.LastName = customer.LastName;
-        //     match.EmailAddress = customer.EmailAddress;
-        //     match.PhoneNumber = customer.PhoneNumber;
-        //     match.IsFlagged = customer.IsFlagged;
-        //     await Context.SaveChangesAsync();
-        await Task.CompletedTask; //defualt before implementation
+        Context.Ratings.Update(rating);
+        await Context.SaveChangesAsync();
+        Context.ChangeTracker.Clear();
     }
 
     public override async Task Delete(RatingModel rating)
     {
         Context.Ratings.Remove(rating);
         await Context.SaveChangesAsync();
+        Context.ChangeTracker.Clear();
 
     }
 }

@@ -1,0 +1,60 @@
+@page "/beer"
+
+@using ModelLibrary
+@using BusinessLogic
+@using BusinessLogic.Interfaces
+
+@inject IBeerLogic beerl
+@inject IBeerGroupLogic groupl
+@inject IRatingLogic ratingl
+@inject IBeerLoverLogic beerloverl
+
+<PageTitle>Beer</PageTitle>
+
+<h1>Beer with best ratings</h1>
+<div class="flex-row">
+    <div class="flex-col">
+        @foreach (var beer in _allbeer)
+        {
+            <div
+                style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf0f1; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
+                <p>@beer.BeerID</p>
+                <p>@beer.BeerName</p>
+                <p>@beer.BeerType </p>
+                <p>@beer.LagerSubType</p>
+                <p>@beer.Brewery</p>
+            </div>
+        }
+        <div class="flex-col">
+            @foreach (var beerLover in _allBeerLovers)
+            {
+                <div
+                    style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf0f1; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
+                    <p>@beerLover.BeerLoverID </p>
+                    <p>@beerLover.BeerLoverName </p>
+                    <p>@beerLover.BeerLoverEmail </p>
+                    <p>@beerLover.BeerGroups </p>
+                    <p>@beerLover.rating</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@code {
+
+    private readonly List<BeerModel> _allbeer = new();
+    private readonly List<BeerLoverModel> _allBeerLovers = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        _allBeerLovers.AddRange(await beerloverl.GetAll());
+        _allbeer.AddRange(await beerl.GetAll());
+    }
+}

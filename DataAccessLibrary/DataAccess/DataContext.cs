@@ -15,7 +15,6 @@ public class DataContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
         modelBuilder.Entity<BeerLoverModel>().HasData(
             new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "John Doe", BeerLoverEmail = "john@example.com" },
             new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Pop Doe", BeerLoverEmail = "Pop@example.com" },
@@ -26,9 +25,8 @@ public class DataContext : DbContext
             new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Dask Doe", BeerLoverEmail = "Dask@example.com" },
             new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Lope Doe", BeerLoverEmail = "Lope@example.com" },
             new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Gope Doe", BeerLoverEmail = "Gope@example.com" }
-   // Add other beer lovers as needed
-   );
-
+        // Add other beer lovers as needed
+        );
         modelBuilder.Entity<BeerGroupModel>().HasData(
             new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Craft Beer Enthusiasts" },
             new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Ale Beer Enthusiasts" },
@@ -36,9 +34,8 @@ public class DataContext : DbContext
             new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Test Beer Enthusiasts" },
             new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "New Beer Enthusiasts" },
             new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "IPA Beer Enthusiasts" }
-            // Add other beer groups as needed
+        // Add other beer groups as needed
         );
-
         modelBuilder.Entity<BeerModel>().HasData(
             new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Geuss new", BeerType = BeerType.ALE, AleSubType = AleSubType.PALE_ALE, Brewery = "Geuss Brewery" },
             new BeerModel { BeerID = Guid.NewGuid(), BeerName = "IPA london", BeerType = BeerType.ALE, AleSubType = AleSubType.INDIA_PALE_ALE, Brewery = "London Brewing Co" },
