@@ -38,6 +38,17 @@
                 </div>
             }
         </div>
+        <div class="flex-col">
+            @foreach (var beergroup in _allGroups)
+            {
+                <div
+                    style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf0f1; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
+                    <p>@beergroup.BeerGroupID </p>
+                    <p>@beergroup.GroupName</p>
+
+                </div>
+            }
+        </div>
     </div>
 </div>
 
@@ -46,6 +57,7 @@
 
     private readonly List<BeerModel> _allbeer = new();
     private readonly List<BeerLoverModel> _allBeerLovers = new();
+    private readonly List<BeerGroupModel> _allGroups = new();
 
     protected override async Task OnInitializedAsync()
     {
@@ -56,5 +68,6 @@
     {
         _allBeerLovers.AddRange(await beerloverl.GetAll());
         _allbeer.AddRange(await beerl.GetAll());
+        _allGroups.AddRange(await groupl.GetAll());
     }
 }
