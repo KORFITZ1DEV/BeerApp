@@ -1,0 +1,22 @@
+[
+    {
+        "BeerName": "Carlsberg Pilsner",
+        "BeerType": "Light_Lager",
+        "Description": "En klassisk dansk pilsner med en lys og forfriskende smag."
+    },
+    {
+        "BeerName": "Tuborg Classic",
+        "BeerType": "Light_Lager",
+        "Description": "En dansk pilsner med en fyldig krop og en let humlet finish."
+    },
+    {
+        "BeerName": "Grimbergen Blonde",
+        "BeerType": "Light_Ale",
+        "Description": "En belgisk ale med en gylden farve og en frugtagtig, krydret smag."
+    },
+    {
+        "BeerName": "Leffe Brune",
+        "BeerType": "Dark_Ale",
+        "Description": "En belgisk ale med en rødbrun farve og en fyldig smag af karamel og tørret frugt."
+    }
+]

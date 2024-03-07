@@ -5,46 +5,14 @@ namespace ModelLibrary
 {
     public enum BeerType
     {
-        ALE,
-        LAGER,
-        SPECIALTY_HYBRID,
-        STRONG_ALE
-    }
-
-    public enum AleSubType
-    {
-        PALE_ALE,
-        INDIA_PALE_ALE,
-        BROWN_ALE,
-        PORTER,
-        STOUT,
-        BELGIAN_ALE,
-        SAISON,
-        WHEAT_BEER,
-        BARLEYWINE
-    }
-
-    public enum LagerSubType
-    {
-        PILSNER,
-        HELLES,
-        BOCK,
-        AMBER_LAGER,
-        DARK_LAGER
-    }
-
-    public enum SpecialtyHybridSubType
-    {
-        FRUIT_BEER,
-        SPICED_HERB_VEGETABLE_BEER,
-        HYBRID_BEER,
-        SOUR_BEER
-    }
-
-    public enum StrongAleSubType
-    {
-        ABBEY_TRAPPIST_ALE,
-        OLD_ALE
+        Light_Lager,
+        Dark_Lager,
+        Light_Ale,
+        IPA,
+        Dark_Ale,
+        Wheat_beer,
+        Sour_beer,
+        Porter_Stout
     }
 
     [PrimaryKey("BeerID")]
@@ -53,15 +21,11 @@ namespace ModelLibrary
     {
         public Guid BeerID { get; set; }
         public string BeerName { get; set; } = string.Empty;
-
         public BeerType BeerType { get; set; }
-        public AleSubType? AleSubType { get; set; }
-        public LagerSubType? LagerSubType { get; set; }
-        public SpecialtyHybridSubType? SpecialtyHybridSubType { get; set; }
-        public StrongAleSubType? StrongAleSubType { get; set; }
-
-        public string Brewery { get; set; } = string.Empty;
-        public List<RatingModel>? Ratings { get; set; }
+        public string Description { get; set; } = string.Empty;
+        public BreweryModel? Brewery { get; set; }
+        public List<RatingModel>? Rating { get; set; }
+        public byte[]? BeerImage { get; set; }
     }
 }
 

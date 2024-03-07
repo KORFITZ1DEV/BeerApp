@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ModelLibrary;
+using Newtonsoft.Json;
 
 namespace DataAccessLibrary.DataAccess;
 
@@ -12,6 +13,7 @@ public class DataContext : DbContext
     public DbSet<BeerLoverModel> BeerLovers => Set<BeerLoverModel>();
     public DbSet<BeerGroupModel> BeerGroups => Set<BeerGroupModel>();
     public DbSet<RatingModel> Ratings => Set<RatingModel>();
+    public DbSet<BreweryModel> Breweries => Set<BreweryModel>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -36,15 +38,30 @@ public class DataContext : DbContext
             new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "IPA Beer Enthusiasts" }
         // Add other beer groups as needed
         );
-        modelBuilder.Entity<BeerModel>().HasData(
-            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Geuss new", BeerType = BeerType.ALE, AleSubType = AleSubType.PALE_ALE, Brewery = "Geuss Brewery" },
-            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "IPA london", BeerType = BeerType.ALE, AleSubType = AleSubType.INDIA_PALE_ALE, Brewery = "London Brewing Co" },
-            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Grimberger double amber", BeerType = BeerType.LAGER, LagerSubType = LagerSubType.AMBER_LAGER, Brewery = "Grimberger Brewery" },
-            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Anakisten bluberry", BeerType = BeerType.SPECIALTY_HYBRID, SpecialtyHybridSubType = SpecialtyHybridSubType.FRUIT_BEER, Brewery = "Anakisten Brewing" },
-            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Trapist lakrids", BeerType = BeerType.STRONG_ALE, StrongAleSubType = StrongAleSubType.ABBEY_TRAPPIST_ALE, Brewery = "Trapist Brews" },
-            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Carlsberg pilsner", BeerType = BeerType.LAGER, LagerSubType = LagerSubType.PILSNER, Brewery = "Carlsberg Brewery" }
-        // Add other beers as needed
-        );
+        modelBuilder.Entity<BreweryModel>().HasData(
+           new BreweryModel { BreweryID = Guid.NewGuid(), BreweryName = "Carlsberg", Country = "Denmark" },
+           new BreweryModel { BreweryID = Guid.NewGuid(), BreweryName = "Munich Brewery", Country = "Germany" },
+           new BreweryModel { BreweryID = Guid.NewGuid(), BreweryName = "Delerium", Country = "Belgium" }
+       // Add other Breweries as needed
+       );
+
+        //Adding the beer data from beerdata.json 
+
+        string jsonFilePath = "../BEER/Data/Beerdata.json"; // File path for beerdata
+        string jsonData = File.ReadAllText(jsonFilePath);
+
+        //load in the json data file
+        List<BeerModel> beers = JsonConvert.DeserializeObject<List<BeerModel>>(jsonData);
+
+        foreach (var beer in beers)
+        {
+            // Generate GUID dynamically
+            beer.BeerID = Guid.NewGuid();
+
+            // Configure with modelBuilder
+            modelBuilder.Entity<BeerModel>().HasData(beer);
+        }
+
     }
 
 }
