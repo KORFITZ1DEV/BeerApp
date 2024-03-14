@@ -57,33 +57,53 @@ namespace DataAccessLibrary.Migrations
                     b.HasData(
                         new
                         {
-                            BeerGroupID = new Guid("8593a6a3-82e9-4ca2-9ce5-feecf1573097"),
-                            GroupName = "Craft Beer Enthusiasts"
+                            BeerGroupID = new Guid("93187833-db2e-41a3-a150-c1d6bc1918e1"),
+                            GroupName = "Hop Heads"
                         },
                         new
                         {
-                            BeerGroupID = new Guid("f3f197dd-5025-4e3e-a2ca-10af3332961f"),
-                            GroupName = "Ale Beer Enthusiasts"
+                            BeerGroupID = new Guid("0fdf19ae-d4ac-47b2-9404-a3998b48fd77"),
+                            GroupName = "Malty Crew"
                         },
                         new
                         {
-                            BeerGroupID = new Guid("bd3f7423-9c8c-4ded-9b0e-abda515a06dc"),
-                            GroupName = "Stout Beer Enthusiasts"
+                            BeerGroupID = new Guid("730b86a1-7e9e-4e0c-ae02-c6de9fc56f29"),
+                            GroupName = "Yeasty Boys"
                         },
                         new
                         {
-                            BeerGroupID = new Guid("c608a24e-23a6-4783-ab27-1b44b229d5ae"),
-                            GroupName = "Test Beer Enthusiasts"
+                            BeerGroupID = new Guid("ec48bf9c-c080-44f2-be55-676db2dae65b"),
+                            GroupName = "Hoppy Hour Heroes"
                         },
                         new
                         {
-                            BeerGroupID = new Guid("91361e7d-8137-46b1-9178-865dc73fa7d4"),
-                            GroupName = "New Beer Enthusiasts"
+                            BeerGroupID = new Guid("2a2a5123-4537-4536-a66a-105160fdce31"),
+                            GroupName = "Fermentation Nation"
                         },
                         new
                         {
-                            BeerGroupID = new Guid("c4b38b9a-6daa-42f4-a85c-b5efba4a82dd"),
-                            GroupName = "IPA Beer Enthusiasts"
+                            BeerGroupID = new Guid("a589528c-fa58-4a57-8ef0-6c268f62cc92"),
+                            GroupName = "Ale Advocates"
+                        },
+                        new
+                        {
+                            BeerGroupID = new Guid("ff7248a2-165c-491e-b284-22ac33f71cad"),
+                            GroupName = "Lager Lovers"
+                        },
+                        new
+                        {
+                            BeerGroupID = new Guid("04d31307-3dee-4881-a48d-6855012855dd"),
+                            GroupName = "Stout Squad"
+                        },
+                        new
+                        {
+                            BeerGroupID = new Guid("95d0fb77-6bd0-411f-97ce-1e60f2961e56"),
+                            GroupName = "Pilsner Posse"
+                        },
+                        new
+                        {
+                            BeerGroupID = new Guid("d6ce914b-b13f-4c47-aef1-73c67cfd1188"),
+                            GroupName = "Sour Society"
                         });
                 });
 
@@ -111,57 +131,63 @@ namespace DataAccessLibrary.Migrations
                     b.HasData(
                         new
                         {
-                            BeerLoverID = new Guid("bd36a650-6390-4c20-bfc7-ea8634ce0ada"),
-                            BeerLoverEmail = "john@example.com",
-                            BeerLoverName = "John Doe"
+                            BeerLoverID = new Guid("7a92bfdc-534c-4202-bbd2-ad19c44e7b71"),
+                            BeerLoverEmail = "fizzmchopps@example.com",
+                            BeerLoverName = "Fizz McHopps"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("a79b372b-3f19-4f8e-8261-d578a9434d3f"),
-                            BeerLoverEmail = "Pop@example.com",
-                            BeerLoverName = "Pop Doe"
+                            BeerLoverID = new Guid("cc99dd93-4613-4499-82ee-3b0457a6f2c2"),
+                            BeerLoverEmail = "brewstervondrink@example.com",
+                            BeerLoverName = "Brewster VonDrinkenstein"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("e0c84540-c286-4037-81d9-f3c693827023"),
-                            BeerLoverEmail = "Joson@example.com",
-                            BeerLoverName = "Joson Doe"
+                            BeerLoverID = new Guid("b7e89bd9-1557-4f68-bcca-aa44433693ae"),
+                            BeerLoverEmail = "hoppymcbrew@example.com",
+                            BeerLoverName = "Hoppy McBrewface"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("038a6e76-1f26-4370-bc24-d578af2ce3c2"),
-                            BeerLoverEmail = "Jason@example.com",
-                            BeerLoverName = "Jason Doe"
+                            BeerLoverID = new Guid("e59733fb-0a3b-4866-8e5a-9ccae7920176"),
+                            BeerLoverEmail = "stoutymcstout@example.com",
+                            BeerLoverName = "Stouty McStoutface"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("3e16db90-c128-4e0f-9eb9-281dc2461b1c"),
-                            BeerLoverEmail = "Casper@example.com",
-                            BeerLoverName = "Casper Doe"
+                            BeerLoverID = new Guid("08b2bccd-54e0-41f2-b1ac-36bfeb8c0fbb"),
+                            BeerLoverEmail = "alejandro@example.com",
+                            BeerLoverName = "Alejandro Cerveza"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("3727add4-f4f7-4cd9-96a3-5f3ce55b3618"),
-                            BeerLoverEmail = "Peter@example.com",
-                            BeerLoverName = "Peter Doe"
+                            BeerLoverID = new Guid("81d69068-fc7c-4b6f-9965-fe53d8c1bf09"),
+                            BeerLoverEmail = "lagerthalager@example.com",
+                            BeerLoverName = "Lagertha Lagerstein"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("814bb73c-c33b-49df-bb32-b36626131c6b"),
-                            BeerLoverEmail = "Dask@example.com",
-                            BeerLoverName = "Dask Doe"
+                            BeerLoverID = new Guid("34175d49-8993-4c03-96d1-fa0a6e750fbd"),
+                            BeerLoverEmail = "hops@example.com",
+                            BeerLoverName = "Hops Solo"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("37161c1f-62d7-4258-a446-80de658ec92e"),
-                            BeerLoverEmail = "Lope@example.com",
-                            BeerLoverName = "Lope Doe"
+                            BeerLoverID = new Guid("1171c4e8-8ebb-40c4-aee4-be3d75ab9e2b"),
+                            BeerLoverEmail = "barleydavidson@example.com",
+                            BeerLoverName = "Barley Davidson"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("6ea640f4-b9bb-4ab6-80bf-90b9ef96f75c"),
-                            BeerLoverEmail = "Gope@example.com",
-                            BeerLoverName = "Gope Doe"
+                            BeerLoverID = new Guid("82679542-4201-4f4c-ac22-16f1ebc8990b"),
+                            BeerLoverEmail = "bockybalboa@example.com",
+                            BeerLoverName = "Bocky Balboa"
+                        },
+                        new
+                        {
+                            BeerLoverID = new Guid("c479fec8-b82c-4b81-85eb-7dab3f2f4cce"),
+                            BeerLoverEmail = "brewbacca@example.com",
+                            BeerLoverName = "Brewbacca"
                         });
                 });
 
@@ -202,31 +228,52 @@ namespace DataAccessLibrary.Migrations
                     b.HasData(
                         new
                         {
-                            BeerID = new Guid("b07772bd-f6c9-425d-ab1d-c9394416720c"),
+                            BeerID = new Guid("3f8a7176-c2bf-418f-bfb4-91c1c912c2b0"),
                             BeerName = "Carlsberg Pilsner",
                             BeerType = 0,
                             Description = "En klassisk dansk pilsner med en lys og forfriskende smag."
                         },
                         new
                         {
-                            BeerID = new Guid("e59841c0-0e3d-4418-8b37-3be230ebebe3"),
+                            BeerID = new Guid("51981424-42a1-4b63-bee4-a6a16cf11e55"),
                             BeerName = "Tuborg Classic",
                             BeerType = 0,
                             Description = "En dansk pilsner med en fyldig krop og en let humlet finish."
                         },
                         new
                         {
-                            BeerID = new Guid("e630f9a5-deb3-4efc-a726-c28d96f4027f"),
+                            BeerID = new Guid("039f6437-059b-494d-ac94-1bb5a528e2f6"),
                             BeerName = "Grimbergen Blonde",
                             BeerType = 2,
                             Description = "En belgisk ale med en gylden farve og en frugtagtig, krydret smag."
                         },
                         new
                         {
-                            BeerID = new Guid("9f7a3b20-f17c-438b-a72c-40d683853b4f"),
-                            BeerName = "Leffe Brune",
+                            BeerID = new Guid("aa25d0c5-2384-418a-bdd7-a46875be34a9"),
+                            BeerName = "Leffe blanch",
+                            BeerType = 2,
+                            Description = "En belgisk light ale med en lysbrun farve og en fyldig smag."
+                        },
+                        new
+                        {
+                            BeerID = new Guid("c6394522-140d-4b03-aa60-b1f78a52121d"),
+                            BeerName = "Gulddame",
+                            BeerType = 0,
+                            Description = "Dansk indentitet."
+                        },
+                        new
+                        {
+                            BeerID = new Guid("0d5891d4-6894-4aae-8d5c-0a6bdf0bf28c"),
+                            BeerName = "Duvel",
+                            BeerType = 2,
+                            Description = "En belgisk ale med en dyb brun farve og en fyldig smag af humle."
+                        },
+                        new
+                        {
+                            BeerID = new Guid("937f5b48-84d7-4aa3-bc50-d936bc2b2ca0"),
+                            BeerName = "Trapist",
                             BeerType = 4,
-                            Description = "En belgisk ale med en rødbrun farve og en fyldig smag af karamel og tørret frugt."
+                            Description = "En belgisk dark ale og en fyldig smag af frugt."
                         });
                 });
 
@@ -256,21 +303,33 @@ namespace DataAccessLibrary.Migrations
                     b.HasData(
                         new
                         {
-                            BreweryID = new Guid("15d82959-2105-425c-b6c3-a24cd694b3ea"),
+                            BreweryID = new Guid("bdf518c1-c726-48a5-b697-a5b5d01e21b0"),
+                            BreweryName = "Munich beer",
+                            Country = "Germany"
+                        },
+                        new
+                        {
+                            BreweryID = new Guid("00780e56-95a4-4850-a23d-9b43e0d13881"),
                             BreweryName = "Carlsberg",
                             Country = "Denmark"
                         },
                         new
                         {
-                            BreweryID = new Guid("4fb47d6c-e110-48b5-b4ea-06a060ee5ee1"),
-                            BreweryName = "Munich Brewery",
-                            Country = "Germany"
+                            BreweryID = new Guid("b280e699-4b9f-4a1f-82be-864b6a74b47a"),
+                            BreweryName = "Heineken",
+                            Country = "Holland"
                         },
                         new
                         {
-                            BreweryID = new Guid("3babc6c6-8d55-4985-ae33-b1be0cd15408"),
+                            BreweryID = new Guid("ff14102c-21b8-4a14-9d14-537473405751"),
                             BreweryName = "Delerium",
                             Country = "Belgium"
+                        },
+                        new
+                        {
+                            BreweryID = new Guid("43441010-b014-41e1-aac3-55aaa51520ae"),
+                            BreweryName = "Tuborg bryggeri",
+                            Country = "Denmark"
                         });
                 });
 

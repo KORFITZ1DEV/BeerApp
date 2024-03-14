@@ -18,7 +18,7 @@
         @foreach (var beer in _allbeer)
         {
             <div
-                style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf0f1; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
+                style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: blue; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
                 <p>@beer.BeerID</p>
                 <p>@beer.BeerName</p>
                 <p>@beer.BeerType </p>
@@ -29,7 +29,7 @@
             @foreach (var beerLover in _allBeerLovers)
             {
                 <div
-                    style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf0f1; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
+                    style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: green; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
                     <p>@beerLover.BeerLoverID </p>
                     <p>@beerLover.BeerLoverName </p>
                     <p>@beerLover.BeerLoverEmail </p>
@@ -40,7 +40,7 @@
             @foreach (var brewery in _allBreweries)
             {
                 <div
-                    style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf0f1; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
+                    style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: red; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
                     <p>@brewery.BreweryName</p>
                     <p>@brewery.Country</p>
 
@@ -51,7 +51,7 @@
             @foreach (var beergroup in _allGroups)
             {
                 <div
-                    style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf0f1; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
+                    style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: yellow; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
                     <p>@beergroup.BeerGroupID </p>
                     <p>@beergroup.GroupName</p>
                 </div>

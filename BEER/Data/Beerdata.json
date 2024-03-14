@@ -15,8 +15,23 @@
         "Description": "En belgisk ale med en gylden farve og en frugtagtig, krydret smag."
     },
     {
-        "BeerName": "Leffe Brune",
+        "BeerName": "Leffe blanch",
+        "BeerType": "Light_Ale",
+        "Description": "En belgisk light ale med en lysbrun farve og en fyldig smag."
+    },
+    {
+        "BeerName": "Gulddame",
+        "BeerType": "Light_Lager",
+        "Description": "Dansk indentitet."
+    },
+    {
+        "BeerName": "Duvel",
+        "BeerType": "Light_Ale",
+        "Description": "En belgisk ale med en dyb brun farve og en fyldig smag af humle."
+    },
+    {
+        "BeerName": "Trapist",
         "BeerType": "Dark_Ale",
-        "Description": "En belgisk ale med en rødbrun farve og en fyldig smag af karamel og tørret frugt."
+        "Description": "En belgisk dark ale og en fyldig smag af frugt."
     }
 ]

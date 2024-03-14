@@ -1,67 +1,62 @@
+using Helpers;
 using Microsoft.EntityFrameworkCore;
 using ModelLibrary;
-using Newtonsoft.Json;
 
 namespace DataAccessLibrary.DataAccess;
 
 public class DataContext : DbContext
 {
-    public DataContext(DbContextOptions<DataContext> options) : base(options)
-    {
-    }
+
     public DbSet<BeerModel> Beers => Set<BeerModel>();
     public DbSet<BeerLoverModel> BeerLovers => Set<BeerLoverModel>();
     public DbSet<BeerGroupModel> BeerGroups => Set<BeerGroupModel>();
     public DbSet<RatingModel> Ratings => Set<RatingModel>();
     public DbSet<BreweryModel> Breweries => Set<BreweryModel>();
 
+    readonly JsonDataExtractor extractor;
+
+    public DataContext(DbContextOptions<DataContext> options) : base(options)
+    {
+        extractor = new JsonDataExtractor();
+    }
+
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<BeerLoverModel>().HasData(
-            new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "John Doe", BeerLoverEmail = "john@example.com" },
-            new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Pop Doe", BeerLoverEmail = "Pop@example.com" },
-            new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Joson Doe", BeerLoverEmail = "Joson@example.com" },
-            new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Jason Doe", BeerLoverEmail = "Jason@example.com" },
-            new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Casper Doe", BeerLoverEmail = "Casper@example.com" },
-            new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Peter Doe", BeerLoverEmail = "Peter@example.com" },
-            new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Dask Doe", BeerLoverEmail = "Dask@example.com" },
-            new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Lope Doe", BeerLoverEmail = "Lope@example.com" },
-            new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Gope Doe", BeerLoverEmail = "Gope@example.com" }
-        // Add other beer lovers as needed
-        );
-        modelBuilder.Entity<BeerGroupModel>().HasData(
-            new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Craft Beer Enthusiasts" },
-            new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Ale Beer Enthusiasts" },
-            new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Stout Beer Enthusiasts" },
-            new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Test Beer Enthusiasts" },
-            new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "New Beer Enthusiasts" },
-            new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "IPA Beer Enthusiasts" }
-        // Add other beer groups as needed
-        );
-        modelBuilder.Entity<BreweryModel>().HasData(
-           new BreweryModel { BreweryID = Guid.NewGuid(), BreweryName = "Carlsberg", Country = "Denmark" },
-           new BreweryModel { BreweryID = Guid.NewGuid(), BreweryName = "Munich Brewery", Country = "Germany" },
-           new BreweryModel { BreweryID = Guid.NewGuid(), BreweryName = "Delerium", Country = "Belgium" }
-       // Add other Breweries as needed
-       );
+        //Adding the Beerlover data from beerloverdata.json
+        List<BeerLoverModel> beerLoverData = extractor.extractData<BeerLoverModel>("../BEER/Data/BeerLoverData.json");
+        foreach (var beerLover in beerLoverData)
+        {
+            beerLover.BeerLoverID = Guid.NewGuid();
+            modelBuilder.Entity<BeerLoverModel>().HasData(beerLover);
+        };
+
+        //Adding the Beergroup data from beergroupData.json
+        List<BeerGroupModel> beerGroupsData = extractor.extractData<BeerGroupModel>("../BEER/Data/BeerGroupData.json");
+        foreach (var group in beerGroupsData)
+        {
+            group.BeerGroupID = Guid.NewGuid();
+            modelBuilder.Entity<BeerGroupModel>().HasData(group);
+        };
+
+        //Adding the Brewery data from beerdata.json 
+        List<BreweryModel> breweriesData = extractor.extractData<BreweryModel>("../BEER/Data/Brewerydata.json");
+        foreach (var brewery in breweriesData)
+        {
+            // Generate GUID dynamically
+            brewery.BreweryID = Guid.NewGuid();
+            // Configure with modelBuilder
+            modelBuilder.Entity<BreweryModel>().HasData(brewery);
+        };
 
         //Adding the beer data from beerdata.json 
-
-        string jsonFilePath = "../BEER/Data/Beerdata.json"; // File path for beerdata
-        string jsonData = File.ReadAllText(jsonFilePath);
-
-        //load in the json data file
-        List<BeerModel> beers = JsonConvert.DeserializeObject<List<BeerModel>>(jsonData);
-
-        foreach (var beer in beers)
+        List<BeerModel> beerData = extractor.extractData<BeerModel>("../BEER/Data/BeerData.json");
+        foreach (var beer in beerData)
         {
             // Generate GUID dynamically
             beer.BeerID = Guid.NewGuid();
-
             // Configure with modelBuilder
             modelBuilder.Entity<BeerModel>().HasData(beer);
         }
-
     }
-
 }
