@@ -1,3 +1,4 @@
+using System.Text;
 using Helpers;
 using Microsoft.EntityFrameworkCore;
 using ModelLibrary;
@@ -21,10 +22,17 @@ public class DataContext : DbContext
     }
 
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    protected override async void OnModelCreating(ModelBuilder modelBuilder)
     {
         //Adding the Beerlover data from beerloverdata.json
-        List<BeerLoverModel> beerLoverData = extractor.extractData<BeerLoverModel>("../BEER/Data/BeerLoverData.json");
+        List<BeerLoverModel> beerLoverData = await extractor.ExtractData("../BEER/Data/BeerLoverData.json", async (BeerLoverModel beerLover) =>
+        {
+            if (beerLover.ProfilePic != null)
+            {
+                string url = BitConverter.ToString(beerLover.ProfilePic);
+                beerLover.ProfilePic = await extractor.DownloadImageAsByteArray(url);
+            }
+        });
         foreach (var beerLover in beerLoverData)
         {
             beerLover.BeerLoverID = Guid.NewGuid();
@@ -32,7 +40,14 @@ public class DataContext : DbContext
         };
 
         //Adding the Beergroup data from beergroupData.json
-        List<BeerGroupModel> beerGroupsData = extractor.extractData<BeerGroupModel>("../BEER/Data/BeerGroupData.json");
+        List<BeerGroupModel> beerGroupsData = await extractor.ExtractData("../BEER/Data/BeerLoverData.json", async (BeerGroupModel beergroup) =>
+        {
+            if (beergroup.GroupImage != null)
+            {
+                string url = BitConverter.ToString(beergroup.GroupImage);
+                beergroup.GroupImage = await extractor.DownloadImageAsByteArray(url);
+            }
+        });
         foreach (var group in beerGroupsData)
         {
             group.BeerGroupID = Guid.NewGuid();
@@ -40,7 +55,7 @@ public class DataContext : DbContext
         };
 
         //Adding the Brewery data from beerdata.json 
-        List<BreweryModel> breweriesData = extractor.extractData<BreweryModel>("../BEER/Data/Brewerydata.json");
+        List<BreweryModel> breweriesData = await extractor.ExtractData("../BEER/Data/BeerLoverData.json", async (BreweryModel brewery) => { });
         foreach (var brewery in breweriesData)
         {
             // Generate GUID dynamically
@@ -50,13 +65,20 @@ public class DataContext : DbContext
         };
 
         //Adding the beer data from beerdata.json 
-        List<BeerModel> beerData = extractor.extractData<BeerModel>("../BEER/Data/BeerData.json");
+        List<BeerModel> beerData = await extractor.ExtractData("../BEER/Data/BeerData.json", async (BeerModel beer) =>
+      {
+          if (beer.BeerImage != null)
+          {
+              string url = BitConverter.ToString(beer.BeerImage);
+              beer.BeerImage = await extractor.DownloadImageAsByteArray(url);
+          }
+      });
+
         foreach (var beer in beerData)
         {
-            // Generate GUID dynamically
             beer.BeerID = Guid.NewGuid();
-            // Configure with modelBuilder
             modelBuilder.Entity<BeerModel>().HasData(beer);
         }
+
     }
 }

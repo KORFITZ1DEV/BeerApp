@@ -2,36 +2,37 @@
     {
         "BeerName": "Carlsberg Pilsner",
         "BeerType": "Light_Lager",
-        "Description": "En klassisk dansk pilsner med en lys og forfriskende smag."
+        "Description": "En klassisk dansk pilsner med en lys og forfriskende smag.",
+        "BeerImage": "https://www.eatingwell.com/thmb/AdUlkswyOCpPaEEQkkDmYbPW5XM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/does-beer-expire-2000-2bc4cb2e8f9b4947b14e13d41a14d999.jpg"
     },
     {
         "BeerName": "Tuborg Classic",
         "BeerType": "Light_Lager",
-        "Description": "En dansk pilsner med en fyldig krop og en let humlet finish."
+        "Description": "En dansk pilsner med en fyldig krop og en let humlet finish.",
+        "BeerImage": "https://www.eatingwell.com/thmb/AdUlkswyOCpPaEEQkkDmYbPW5XM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/does-beer-expire-2000-2bc4cb2e8f9b4947b14e13d41a14d999.jpg"
     },
     {
         "BeerName": "Grimbergen Blonde",
         "BeerType": "Light_Ale",
-        "Description": "En belgisk ale med en gylden farve og en frugtagtig, krydret smag."
-    },
-    {
-        "BeerName": "Leffe blanch",
-        "BeerType": "Light_Ale",
-        "Description": "En belgisk light ale med en lysbrun farve og en fyldig smag."
+        "Description": "En belgisk ale med en gylden farve og en frugtagtig, krydret smag.",
+        "BeerImage": "https://www.eatingwell.com/thmb/AdUlkswyOCpPaEEQkkDmYbPW5XM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/does-beer-expire-2000-2bc4cb2e8f9b4947b14e13d41a14d999.jpg"
     },
     {
         "BeerName": "Gulddame",
         "BeerType": "Light_Lager",
-        "Description": "Dansk indentitet."
+        "Description": "Dansk indentitet.",
+        "BeerImage": "https://www.eatingwell.com/thmb/AdUlkswyOCpPaEEQkkDmYbPW5XM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/does-beer-expire-2000-2bc4cb2e8f9b4947b14e13d41a14d999.jpg"
     },
     {
         "BeerName": "Duvel",
         "BeerType": "Light_Ale",
-        "Description": "En belgisk ale med en dyb brun farve og en fyldig smag af humle."
+        "Description": "En belgisk ale med en dyb brun farve og en fyldig smag af humle.",
+        "BeerImage": "https://www.eatingwell.com/thmb/AdUlkswyOCpPaEEQkkDmYbPW5XM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/does-beer-expire-2000-2bc4cb2e8f9b4947b14e13d41a14d999.jpg"
     },
     {
         "BeerName": "Trapist",
         "BeerType": "Dark_Ale",
-        "Description": "En belgisk dark ale og en fyldig smag af frugt."
+        "Description": "En belgisk dark ale og en fyldig smag af frugt.",
+        "BeerImage": "https://www.eatingwell.com/thmb/AdUlkswyOCpPaEEQkkDmYbPW5XM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/does-beer-expire-2000-2bc4cb2e8f9b4947b14e13d41a14d999.jpg"
     }
 ]
