@@ -8,9 +8,10 @@ public class DataContext : DbContext
     public DataContext(DbContextOptions<DataContext> options) : base(options)
     {
     }
-    public DbSet<BeerModel> Beers => Set<BeerModel>();
-    public DbSet<BeerLoverModel> BeerLovers => Set<BeerLoverModel>();
     public DbSet<BeerGroupModel> BeerGroups => Set<BeerGroupModel>();
+    public DbSet<BeerLoverModel> BeerLovers => Set<BeerLoverModel>();
+    public DbSet<BeerModel> Beers => Set<BeerModel>();
+    public DbSet<BreweryModel> Breweries => Set<BreweryModel>();
     public DbSet<RatingModel> Ratings => Set<RatingModel>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -27,6 +28,12 @@ public class DataContext : DbContext
             new BeerLoverModel { BeerLoverID = Guid.NewGuid(), BeerLoverName = "Gope Doe", BeerLoverEmail = "Gope@example.com" }
         // Add other beer lovers as needed
         );
+        modelBuilder.Entity<BreweryModel>().HasData(
+           new BreweryModel { BreweryID = Guid.NewGuid(), BreweryName = "Carlsberg", BreweryAddress = "9838 Østrebro København SW", Country = "DK" },
+           new BreweryModel { BreweryID = Guid.NewGuid(), BreweryName = "Tuborg", BreweryAddress = "9838 Vestrebro København NW", Country = "DK" },
+           new BreweryModel { BreweryID = Guid.NewGuid(), BreweryName = "Leffe", BreweryAddress = "9090 Brussels NW", Country = "BL" }
+       // Add other Brewery as needed
+       );
         modelBuilder.Entity<BeerGroupModel>().HasData(
             new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Craft Beer Enthusiasts" },
             new BeerGroupModel { BeerGroupID = Guid.NewGuid(), GroupName = "Ale Beer Enthusiasts" },
@@ -37,12 +44,12 @@ public class DataContext : DbContext
         // Add other beer groups as needed
         );
         modelBuilder.Entity<BeerModel>().HasData(
-            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Geuss new", BeerType = BeerType.ALE, AleSubType = AleSubType.PALE_ALE, Brewery = "Geuss Brewery" },
-            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "IPA london", BeerType = BeerType.ALE, AleSubType = AleSubType.INDIA_PALE_ALE, Brewery = "London Brewing Co" },
-            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Grimberger double amber", BeerType = BeerType.LAGER, LagerSubType = LagerSubType.AMBER_LAGER, Brewery = "Grimberger Brewery" },
-            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Anakisten bluberry", BeerType = BeerType.SPECIALTY_HYBRID, SpecialtyHybridSubType = SpecialtyHybridSubType.FRUIT_BEER, Brewery = "Anakisten Brewing" },
-            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Trapist lakrids", BeerType = BeerType.STRONG_ALE, StrongAleSubType = StrongAleSubType.ABBEY_TRAPPIST_ALE, Brewery = "Trapist Brews" },
-            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Carlsberg pilsner", BeerType = BeerType.LAGER, LagerSubType = LagerSubType.PILSNER, Brewery = "Carlsberg Brewery" }
+            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Geuss new", BeerType = BeerType.ALE, AleSubType = AleSubType.PALE_ALE },
+            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "IPA london", BeerType = BeerType.ALE, AleSubType = AleSubType.INDIA_PALE_ALE },
+            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Grimberger double amber", BeerType = BeerType.LAGER, LagerSubType = LagerSubType.AMBER_LAGER },
+            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Anakisten bluberry", BeerType = BeerType.SPECIALTY_HYBRID, SpecialtyHybridSubType = SpecialtyHybridSubType.FRUIT_BEER },
+            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Trapist lakrids", BeerType = BeerType.STRONG_ALE, StrongAleSubType = StrongAleSubType.ABBEY_TRAPPIST_ALE },
+            new BeerModel { BeerID = Guid.NewGuid(), BeerName = "Carlsberg pilsner", BeerType = BeerType.LAGER, LagerSubType = LagerSubType.PILSNER }
         // Add other beers as needed
         );
     }

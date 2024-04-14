@@ -21,6 +21,7 @@ public static class ServiceCollectionExtention
         services.AddTransient<IModelContext<BeerLoverModel>, BeerLoverContext>();
         services.AddTransient<IModelContext<BeerGroupModel>, BeerGroupContext>();
         services.AddTransient<IModelContext<RatingModel>, RatingContext>();
+        services.AddTransient<IModelContext<BreweryModel>, BreweryContext>();
 
         return services;
     }
