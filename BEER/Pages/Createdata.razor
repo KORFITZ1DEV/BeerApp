@@ -15,37 +15,90 @@
 
 <PageTitle>Create data</PageTitle>
 
-<h2>Create a New Beer</h2>
+<div class="width: 100%">
+    <h2>Create a New Beer</h2>
 
-<EditForm Model="_newBeer" OnValidSubmit="CreateBeer" class="d-flex flex-column m-2 pb-2">
+    <EditForm Model="_newBeer" OnValidSubmit="CreateBeer" class="d-flex flex-column m-2 pb-2">
 
-    <div class="form-group">
-        <label for="beerName">Beer Name:</label>
-        <InputText @bind-Value="_newBeer.BeerName" class="form-control" id="beerName" />
-    </div>
+        <div class="form-group">
+            <label for="beerName">Beer Name:</label>
+            <InputText @bind-Value="_newBeer.BeerName" class="form-control" id="beerName" />
+        </div>
 
-    <div class="form-group">
-        <label for="beerType">Beer Type:</label>
-        <select class="form-control" id="beerType" @bind="_newBeer.BeerType">
-            @foreach (BeerType beerType in Enum.GetValues(typeof(BeerType)))
-            {
-                <option value="@beerType">@beerType</option>
-            }
-        </select>
-    </div>
+        <div class="form-group">
+            <label for="beerType">Beer Type:</label>
+            <select class="form-control" id="beerType" @bind="_newBeer.BeerType">
+                @foreach (BeerType beerType in Enum.GetValues(typeof(BeerType)))
+                {
+                    <option value="@beerType">@beerType</option>
+                }
+            </select>
+        </div>
 
-    <div class="form-group">
-        <label for="description">Description:</label>
-        <InputText @bind-Value="_newBeer.Description" class="form-control" id="description" />
-    </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <InputText @bind-Value="_newBeer.Description" class="form-control" id="description" />
+        </div>
 
-    <div class="form-group">
-        <label for="beerImage">Beer Image:</label>
-        <InputFile OnChange="@LoadBeerImage" class="form-control" accept=".png, .jpg, .jpeg" />
-    </div>
+        <div class="form-group">
+            <label for="beerImage">Beer Image:</label>
+            <InputFile OnChange="@LoadBeerImage" class="form-control" accept=".png, .jpg, .jpeg" />
+        </div>
 
-    <button type="submit" class="btn btn-primary">Create Beer</button>
-</EditForm>
+        <button type="submit" class="btn btn-primary">Create Beer</button>
+    </EditForm>
+
+
+    <h2>Create BeerLover</h2>
+    <EditForm Model="_newBeerLover" OnValidSubmit="CreateBeerLover" class="d-flex flex-column m-2 pb-2">
+        <div class="form-group">
+            <label for="beerLoverName">Beer Lover Name:</label>
+            <InputText @bind-Value="_newBeerLover.BeerLoverName" class="form-control" id="beerLoverName" />
+        </div>
+
+        <div class="form-group">
+            <label for="beerLoverEmail">Beer Lover Email:</label>
+            <InputText @bind-Value="_newBeerLover.BeerLoverEmail" class="form-control" id="beerLoverEmail" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create BeerLover</button>
+    </EditForm>
+
+    <h2>Create BeerGroup</h2>
+    <EditForm Model="_newGroup" OnValidSubmit="CreateBeerGroup" class="d-flex flex-column m-2 pb-2">
+        <div class="form-group">
+            <label for="groupName">Group Name:</label>
+            <InputText @bind-Value="_newGroup.GroupName" class="form-control" id="groupName" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Group</button>
+    </EditForm>
+
+    <h2>Create Brewery</h2>
+    <EditForm Model="_newBrewery" OnValidSubmit="CreateBrewery" class="d-flex flex-column m-2 pb-2">
+        <div class="form-group">
+            <label for="breweryName">Brewery Name:</label>
+            <InputText @bind-Value="_newBrewery.BreweryName" class="form-control" id="breweryName" />
+        </div>
+
+        <div class="form-group">
+            <label for="breweryAddress">Brewery Address:</label>
+            <InputText @bind-Value="_newBrewery.BreweryAddress" class="form-control" id="breweryAddress" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Brewery</button>
+    </EditForm>
+
+    <h2>Create Rating</h2>
+    <EditForm Model="_newRating" OnValidSubmit="CreateRating" class="d-flex flex-column m-2 pb-2">
+        <div class="form-group">
+            <label for="ratingScore">Rating Score:</label>
+            <InputNumber @bind-Value="_newRating.RatingScore" class="form-control" id="ratingScore" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Rating</button>
+    </EditForm>
+</div>
 
 @if (errors.Count > 0)
 {
@@ -63,9 +116,15 @@
 
 @code {
     private BeerModel _newBeer = new BeerModel();
-    private byte[] beerImage;
+    private BreweryModel _newBrewery = new BreweryModel();
+    private BeerLoverModel _newBeerLover = new BeerLoverModel();
+    private RatingModel _newRating = new RatingModel();
+    private BeerGroupModel _newGroup = new BeerGroupModel();
+
+    private byte[]? beerImage;
     private long maxFileSize = 1024 * 1024 * 5; //represnts 3MB
     private int MaxAllowedFiles = 1;
+
     private List<string> errors = new();
 
     private async Task LoadBeerImage(InputFileChangeEventArgs e)
@@ -94,14 +153,64 @@
         }
     }
 
+    private async Task CreateBeerLover()
+    {
+        try
+        {
+            await beerloverl.Add(_newBeerLover);
+            _newBeerLover = new BeerLoverModel();
+        }
+        catch (Exception ex)
+        {
+            // Handle any errors here
+        }
+    }
+
+    private async Task CreateBeerGroup()
+    {
+        try
+        {
+            await groupl.Add(_newGroup);
+            _newGroup = new BeerGroupModel();
+        }
+        catch (Exception ex)
+        {
+            // Handle any errors here
+        }
+    }
+
+    private async Task CreateBrewery()
+    {
+        try
+        {
+            await breweryl.Add(_newBrewery);
+            _newBrewery = new BreweryModel();
+        }
+        catch (Exception ex)
+        {
+            // Handle any errors here
+        }
+    }
+
+    private async Task CreateRating()
+    {
+        try
+        {
+            await ratingl.Add(_newRating);
+            _newRating = new RatingModel();
+        }
+        catch (Exception ex)
+        {
+            // Handle any errors here
+        }
+    }
+
     private async Task CreateBeer()
     {
-        // Perform validation here if needed
-
         try
         {
             await beerl.Add(_newBeer);
-
+            _newBeer = new BeerModel();
         }
         catch (Exception ex)
         {

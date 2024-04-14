@@ -21,13 +21,12 @@
         {
             <div
                 style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf023; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
-                <p>@beer.BeerID</p>
                 <p>@beer.BeerName</p>
+                @if (beer.BeerImage != null) {
+                    <img height="200" width = "250" src="data:image/jpeg;base64,@(Convert.ToBase64String(beer.BeerImage))" alt="Beer Image" />
+                 }
                 <p>@beer.BeerType </p>
                 <p>@beer.Description </p>
-                @if (beer.BeerImage != null) {
-            <img height="200" width = "350" src="data:image/jpeg;base64,@(Convert.ToBase64String(beer.BeerImage))" alt="Beer Image" />
-        }
                 <p>@beer.LagerSubType</p>
                 <p>@beer.Brewery</p>
                 <button type="button" @onclick="(e) => DeleteBeer(beer)" class="btn btn-primary">Delete</button>
