@@ -1,0 +1,112 @@
+@page "/create data"
+
+@using ModelLibrary
+@using BusinessLogic
+@using BusinessLogic.Interfaces
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Components.Forms
+
+@inject IBeerLogic beerl
+@inject IBeerGroupLogic groupl
+@inject IRatingLogic ratingl
+@inject IBeerLoverLogic beerloverl
+@inject IBreweryLogic breweryl
+@inject IConfiguration config
+
+<PageTitle>Create data</PageTitle>
+
+<h2>Create a New Beer</h2>
+
+<EditForm Model="_newBeer" OnValidSubmit="CreateBeer" class="d-flex flex-column m-2 pb-2">
+
+    <div class="form-group">
+        <label for="beerName">Beer Name:</label>
+        <InputText @bind-Value="_newBeer.BeerName" class="form-control" id="beerName" />
+    </div>
+
+    <div class="form-group">
+        <label for="beerType">Beer Type:</label>
+        <select class="form-control" id="beerType" @bind="_newBeer.BeerType">
+            @foreach (BeerType beerType in Enum.GetValues(typeof(BeerType)))
+            {
+                <option value="@beerType">@beerType</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <InputText @bind-Value="_newBeer.Description" class="form-control" id="description" />
+    </div>
+
+    <div class="form-group">
+        <label for="beerImage">Beer Image:</label>
+        <InputFile OnChange="@LoadBeerImage" class="form-control" accept=".png, .jpg, .jpeg" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Beer</button>
+</EditForm>
+
+@if (errors.Count > 0)
+{
+    <h2>Errors</h2>
+    <ul class="text-danger">
+    @foreach (var error in errors)
+        {
+            <li>
+                @error
+            </li>
+        }
+    </ul>
+
+}
+
+@code {
+    private BeerModel _newBeer = new BeerModel();
+    private byte[] beerImage;
+    private long maxFileSize = 1024 * 1024 * 5; //represnts 3MB
+    private int MaxAllowedFiles = 1;
+    private List<string> errors = new();
+
+    private async Task LoadBeerImage(InputFileChangeEventArgs e)
+    {
+        errors.Clear();
+
+        if (e.FileCount > MaxAllowedFiles)
+        {
+            errors.Add($"Error: Attempting to upload {e.FileCount} when only {MaxAllowedFiles} can be uploaded at once");
+            return;
+        }
+        foreach (var file in e.GetMultipleFiles(MaxAllowedFiles))
+        {
+            try
+            {
+                // Read the file into a byte array
+                using var ms = new MemoryStream();
+                await file.OpenReadStream(maxFileSize).CopyToAsync(ms);
+                _newBeer.BeerImage = ms.ToArray();
+
+            }
+            catch (Exception ex)
+            {
+                errors.Add($"File: {file.Name} Error: {ex.Message}");
+            }
+        }
+    }
+
+    private async Task CreateBeer()
+    {
+        // Perform validation here if needed
+
+        try
+        {
+            await beerl.Add(_newBeer);
+
+        }
+        catch (Exception ex)
+        {
+            // Handle any errors here
+        }
+    }
+
+}
