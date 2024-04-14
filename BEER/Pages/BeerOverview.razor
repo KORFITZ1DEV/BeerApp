@@ -8,6 +8,7 @@
 @inject IBeerGroupLogic groupl
 @inject IRatingLogic ratingl
 @inject IBeerLoverLogic beerloverl
+@inject IBreweryLogic breweryl
 
 <PageTitle>Beer</PageTitle>
 
@@ -34,7 +35,7 @@
                     <p>@beerLover.BeerLoverName </p>
                     <p>@beerLover.BeerLoverEmail </p>
                     <p>@beerLover.BeerGroups </p>
-                    <p>@beerLover.rating</p>
+                    <p>@beerLover.Ratings</p>
                 </div>
             }
         </div>
@@ -49,8 +50,21 @@
                 </div>
             }
         </div>
+        <div class="flex-col">
+            @foreach (var brewery in _allBreweries)
+            {
+                <div
+                    style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf0f1; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
+                    <p>@brewery.BreweryID </p>
+                    <p>@brewery.BreweryName</p>
+                    <p>@brewery.BreweryAddress</p>
+                    <p>@brewery.Country</p>
+
+                </div>
+            }
+        </div>
     </div>
-</div>
+</div>cd B
 
 
 @code {
@@ -58,6 +72,7 @@
     private readonly List<BeerModel> _allbeer = new();
     private readonly List<BeerLoverModel> _allBeerLovers = new();
     private readonly List<BeerGroupModel> _allGroups = new();
+    private readonly List<BreweryModel> _allBreweries = new();
 
     protected override async Task OnInitializedAsync()
     {
@@ -69,5 +84,6 @@
         _allBeerLovers.AddRange(await beerloverl.GetAll());
         _allbeer.AddRange(await beerl.GetAll());
         _allGroups.AddRange(await groupl.GetAll());
+        _allBreweries.AddRange(await breweryl.GetAll());
     }
 }
