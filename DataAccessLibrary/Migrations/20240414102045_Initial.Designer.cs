@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DataAccessLibrary.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20231205135630_Initial")]
+    [Migration("20240414102045_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -57,32 +57,32 @@ namespace DataAccessLibrary.Migrations
                     b.HasData(
                         new
                         {
-                            BeerGroupID = new Guid("6e9e20a6-6ae4-497e-81e4-0bb5a41fc1e9"),
+                            BeerGroupID = new Guid("fa655159-07e9-42a0-9655-5fef0ec31283"),
                             GroupName = "Craft Beer Enthusiasts"
                         },
                         new
                         {
-                            BeerGroupID = new Guid("eac27345-715f-48e3-97cf-2f2658475205"),
+                            BeerGroupID = new Guid("71e9a6a6-877a-44c5-a6df-681241dbab19"),
                             GroupName = "Ale Beer Enthusiasts"
                         },
                         new
                         {
-                            BeerGroupID = new Guid("3e7b2959-ee1e-40c8-a173-eb930deaedc6"),
+                            BeerGroupID = new Guid("e11d2561-fb66-4a18-93be-ec122b0fd9d4"),
                             GroupName = "Stout Beer Enthusiasts"
                         },
                         new
                         {
-                            BeerGroupID = new Guid("4041008e-ee42-404d-873f-7c51825c37fa"),
+                            BeerGroupID = new Guid("efc393c7-063a-4595-bfa0-a819f1adcc09"),
                             GroupName = "Test Beer Enthusiasts"
                         },
                         new
                         {
-                            BeerGroupID = new Guid("dfa2eda8-361b-4fc7-9c6a-6cac9c32215e"),
+                            BeerGroupID = new Guid("43393fb3-c80a-47e0-a3be-dda7632073b4"),
                             GroupName = "New Beer Enthusiasts"
                         },
                         new
                         {
-                            BeerGroupID = new Guid("5cbc2eac-498b-4745-adda-50450e80c5ed"),
+                            BeerGroupID = new Guid("75b04c6c-22e0-41de-93ee-dd02b374237e"),
                             GroupName = "IPA Beer Enthusiasts"
                         });
                 });
@@ -108,55 +108,55 @@ namespace DataAccessLibrary.Migrations
                     b.HasData(
                         new
                         {
-                            BeerLoverID = new Guid("875c9a48-9df9-4553-a5a6-d709c673cb69"),
+                            BeerLoverID = new Guid("b35752b1-ecb1-491b-8a37-ff1c4b7a9e9e"),
                             BeerLoverEmail = "john@example.com",
                             BeerLoverName = "John Doe"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("ed3768c1-6053-4a7c-855f-5d9b634a70df"),
+                            BeerLoverID = new Guid("321e4734-7b8b-4d95-8aa6-a960a941bbdb"),
                             BeerLoverEmail = "Pop@example.com",
                             BeerLoverName = "Pop Doe"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("281a05e8-afa2-4d20-a077-384350caee20"),
+                            BeerLoverID = new Guid("ec5cff0e-5df6-429d-a177-4b9528a528d1"),
                             BeerLoverEmail = "Joson@example.com",
                             BeerLoverName = "Joson Doe"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("8c28cfe4-9c87-42bc-9eab-f2051e71aca6"),
+                            BeerLoverID = new Guid("d187fb0b-0061-4722-8949-a2b4851a68f8"),
                             BeerLoverEmail = "Jason@example.com",
                             BeerLoverName = "Jason Doe"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("8a3bb6bc-d9cf-4198-8bce-2f9bc9948155"),
+                            BeerLoverID = new Guid("d7468fb6-3f09-4319-86c8-da727647456f"),
                             BeerLoverEmail = "Casper@example.com",
                             BeerLoverName = "Casper Doe"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("a0f7363a-d51e-49c4-99af-9a46ebf7dda8"),
+                            BeerLoverID = new Guid("359a75b7-497c-4476-a2a2-7aa2d04d8bdc"),
                             BeerLoverEmail = "Peter@example.com",
                             BeerLoverName = "Peter Doe"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("b474dc2a-66d4-438a-b9ba-8bf58a9d187d"),
+                            BeerLoverID = new Guid("8b454255-f001-4d6a-951b-2856b1a58a57"),
                             BeerLoverEmail = "Dask@example.com",
                             BeerLoverName = "Dask Doe"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("f75c7350-03da-4e0c-8a35-950e21168799"),
+                            BeerLoverID = new Guid("67b79d6e-1aa0-4829-bc20-5c3dd16e6316"),
                             BeerLoverEmail = "Lope@example.com",
                             BeerLoverName = "Lope Doe"
                         },
                         new
                         {
-                            BeerLoverID = new Guid("d47f52d1-ea5f-4557-abcb-31c57ed2b5c5"),
+                            BeerLoverID = new Guid("6078963c-ef07-4ef8-9031-0ce84011c595"),
                             BeerLoverEmail = "Gope@example.com",
                             BeerLoverName = "Gope Doe"
                         });
@@ -198,7 +198,7 @@ namespace DataAccessLibrary.Migrations
                     b.HasData(
                         new
                         {
-                            BeerID = new Guid("17b75e7b-c621-4793-ba3e-45058f54fccf"),
+                            BeerID = new Guid("374b135e-e8c4-429c-ba89-909e82d22056"),
                             AleSubType = 0,
                             BeerName = "Geuss new",
                             BeerType = 0,
@@ -206,7 +206,7 @@ namespace DataAccessLibrary.Migrations
                         },
                         new
                         {
-                            BeerID = new Guid("7d0f6055-0f22-4ee1-b480-eeebd7dc7cd5"),
+                            BeerID = new Guid("7572a355-7aa7-43db-875a-79781ad1a537"),
                             AleSubType = 1,
                             BeerName = "IPA london",
                             BeerType = 0,
@@ -214,7 +214,7 @@ namespace DataAccessLibrary.Migrations
                         },
                         new
                         {
-                            BeerID = new Guid("3b776763-921e-4174-94e9-9485a73a230c"),
+                            BeerID = new Guid("0f356aa0-33d2-4f49-aa78-e7551c9f5da8"),
                             BeerName = "Grimberger double amber",
                             BeerType = 1,
                             Brewery = "Grimberger Brewery",
@@ -222,7 +222,7 @@ namespace DataAccessLibrary.Migrations
                         },
                         new
                         {
-                            BeerID = new Guid("f9a9833d-b2ef-412f-91ca-717755ff052b"),
+                            BeerID = new Guid("69d377c9-24dc-4189-ad24-d9f9461e3fd5"),
                             BeerName = "Anakisten bluberry",
                             BeerType = 2,
                             Brewery = "Anakisten Brewing",
@@ -230,7 +230,7 @@ namespace DataAccessLibrary.Migrations
                         },
                         new
                         {
-                            BeerID = new Guid("f2a9e081-edf8-4644-9e49-0a2c275576a0"),
+                            BeerID = new Guid("5a6dbf58-e063-41d1-8865-572a5f88c300"),
                             BeerName = "Trapist lakrids",
                             BeerType = 3,
                             Brewery = "Trapist Brews",
@@ -238,7 +238,7 @@ namespace DataAccessLibrary.Migrations
                         },
                         new
                         {
-                            BeerID = new Guid("ae54d8df-8b6a-48b7-bc4b-df11c166c5e3"),
+                            BeerID = new Guid("351f4265-206f-418b-9729-0eb96daacec7"),
                             BeerName = "Carlsberg pilsner",
                             BeerType = 1,
                             Brewery = "Carlsberg Brewery",
