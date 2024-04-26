@@ -45,7 +45,7 @@
             <InputFile OnChange="@LoadBeerImage" class="form-control" accept=".png, .jpg, .jpeg" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Create Beer</button>
+        <button type="submit" class="btn btn-success">Create Beer</button>
     </EditForm>
 
 
@@ -61,7 +61,7 @@
             <InputText @bind-Value="_newBeerLover.BeerLoverEmail" class="form-control" id="beerLoverEmail" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Create BeerLover</button>
+        <button type="submit" class="btn btn-success">Create BeerLover</button>
     </EditForm>
 
     <h2>Create BeerGroup</h2>
@@ -71,7 +71,7 @@
             <InputText @bind-Value="_newGroup.GroupName" class="form-control" id="groupName" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Create Group</button>
+        <button type="submit" class="btn btn-success">Create Group</button>
     </EditForm>
 
     <h2>Create Brewery</h2>
@@ -86,7 +86,7 @@
             <InputText @bind-Value="_newBrewery.BreweryAddress" class="form-control" id="breweryAddress" />
         </div>
 
-        <button type="submit" class="btn btn-primary">Create Brewery</button>
+        <button type="submit" class="btn btn-success">Create Brewery</button>
     </EditForm>
 
     <h2>Create Rating</h2>
@@ -95,8 +95,23 @@
             <label for="ratingScore">Rating Score:</label>
             <InputNumber @bind-Value="_newRating.RatingScore" class="form-control" id="ratingScore" />
         </div>
+        <div class="form-group">
+            <label for="review">Review:</label>
+            <textarea @bind="_newRating.Review" class="form-control" id="review"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="tasterName">Taster:</label>
+            <InputText @bind-Value="_tasterName" class="form-control" id="tasterName" />
+            <!-- You can use an autocomplete dropdown here if available -->
+        </div>
 
-        <button type="submit" class="btn btn-primary">Create Rating</button>
+        <div class="form-group">
+            <label for="beerName">Beer:</label>
+            <InputText @bind-Value="_beerName" class="form-control" id="beerName" />
+            <!-- You can use an autocomplete dropdown here if available -->
+        </div>
+
+        <button type="submit" class="btn btn-success">Create Rating</button>
     </EditForm>
 </div>
 
@@ -124,6 +139,12 @@
     private byte[]? beerImage;
     private long maxFileSize = 1024 * 1024 * 5; //represnts 3MB
     private int MaxAllowedFiles = 1;
+
+    private string _tasterName;
+    private string _beerName;
+
+    private BeerLoverModel _selectedTaster;
+    private BeerModel _selectedBeer;
 
     private List<string> errors = new();
 
@@ -196,8 +217,15 @@
     {
         try
         {
+            await SearchTaster();
+            await SearchBeer();
+            _newRating.Taster = _selectedTaster;
+            _newRating.Beer = _selectedBeer;
+            _newRating.RatingDate = DateTime.Now.ToUniversalTime();
             await ratingl.Add(_newRating);
             _newRating = new RatingModel();
+            _tasterName = "";
+            _beerName = "";
         }
         catch (Exception ex)
         {
@@ -217,5 +245,23 @@
             // Handle any errors here
         }
     }
+    private async Task SearchTaster()
+    {
+        if (!string.IsNullOrEmpty(_tasterName))
+        {
+            _selectedTaster = await beerloverl.GetOneWhere(b => b.BeerLoverName == _tasterName);
+            Console.WriteLine(_selectedTaster);
+        }
+    }
+
+    private async Task SearchBeer()
+    {
+        if (!string.IsNullOrEmpty(_beerName))
+        {
+            _selectedBeer = await beerl.GetOneWhere(b => b.BeerName == _beerName);
+            Console.WriteLine(_selectedBeer);
+        }
+    }
+
 
 }

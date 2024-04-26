@@ -22,9 +22,11 @@
             <div
                 style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf023; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
                 <p>@beer.BeerName</p>
-                @if (beer.BeerImage != null) {
-                    <img height="200" width = "250" src="data:image/jpeg;base64,@(Convert.ToBase64String(beer.BeerImage))" alt="Beer Image" />
-                 }
+                @if (beer.BeerImage != null)
+                {
+                    <img height="200" width="250" src="data:image/jpeg;base64,@(Convert.ToBase64String(beer.BeerImage))"
+                        alt="Beer Image" />
+                }
                 <p>@beer.BeerType </p>
                 <p>@beer.Description </p>
                 <p>@beer.LagerSubType</p>
@@ -69,6 +71,21 @@
                 </div>
             }
         </div>
+        <div class="flex-col">
+            @foreach (var rating in _allRatings)
+            {
+                <div
+                    style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #CE3A1A; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
+                    <p>@rating.RatingID</p>
+                    <p>@(rating.Beer != null ? rating.Beer.BeerName : "Beer not available")</p>
+                    <p>@(rating.Taster.BeerLoverName)</p>
+                    <p>@rating.RatingScore</p>
+                    <p>@rating.RatingDate</p>
+                    <p>@rating.Review</p>
+                </div>
+            }
+        </div>
+
     </div>
 </div>
 
@@ -79,12 +96,14 @@
     readonly List<BeerLoverModel> _allBeerLovers = new();
     readonly List<BeerGroupModel> _allGroups = new();
     readonly List<BreweryModel> _allBreweries = new();
+    readonly List<RatingModel> _allRatings = new();
 
 
-    public async Task DeleteBeer(BeerModel beer){
-    await beerl.Delete(beer);
-    _allbeer.Remove(beer); // Remove the deleted beer from the list
-}
+    public async Task DeleteBeer(BeerModel beer)
+    {
+        await beerl.Delete(beer);
+        _allbeer.Remove(beer); // Remove the deleted beer from the list
+    }
 
 
     protected override async Task OnInitializedAsync()
@@ -93,5 +112,6 @@
         _allbeer.AddRange(await beerl.GetAll());
         _allGroups.AddRange(await groupl.GetAll());
         _allBreweries.AddRange(await breweryl.GetAll());
+        _allRatings.AddRange(await ratingl.GetAll());
     }
 }
