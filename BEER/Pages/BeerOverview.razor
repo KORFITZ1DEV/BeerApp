@@ -44,6 +44,8 @@
                     <p>@beerLover.BeerLoverEmail </p>
                     <p>@beerLover.BeerGroups </p>
                     <p>@beerLover.Ratings</p>
+                    <button type="button" @onclick="(e) => DeleteBeerLover(beerLover)"
+                        class="btn btn-danger">Delete</button>
                 </div>
             }
         </div>
@@ -54,7 +56,7 @@
                     style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #aaadf1; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
                     <p>@beergroup.BeerGroupID </p>
                     <p>@beergroup.GroupName</p>
-
+                    <button type="button" @onclick="(e) => DeleteGroup(beergroup)" class="btn btn-danger">Delete</button>
                 </div>
             }
         </div>
@@ -67,7 +69,7 @@
                     <p>@brewery.BreweryName</p>
                     <p>@brewery.BreweryAddress</p>
                     <p>@brewery.Country</p>
-
+                    <button type="button" @onclick="(e) => DeleteBrewery(brewery)" class="btn btn-danger">Delete</button>
                 </div>
             }
         </div>
@@ -82,6 +84,7 @@
                     <p>@rating.RatingScore</p>
                     <p>@rating.RatingDate</p>
                     <p>@rating.Review</p>
+                    <button type="button" @onclick="(e) => DeleteRating(rating)" class="btn btn-danger">Delete</button>
                 </div>
             }
         </div>
@@ -104,6 +107,32 @@
         await beerl.Delete(beer);
         _allbeer.Remove(beer); // Remove the deleted beer from the list
     }
+
+    public async Task DeleteBeerLover(BeerLoverModel beerLover)
+    {
+        await beerloverl.Delete(beerLover);
+        _allBeerLovers.Remove(beerLover);
+    }
+
+    public async Task DeleteGroup(BeerGroupModel group)
+    {
+        await groupl.Delete(group);
+        _allGroups.Remove(group);
+    }
+    public async Task DeleteBrewery(BreweryModel brewery)
+    {
+        await breweryl.Delete(brewery);
+        _allBreweries.Remove(brewery);
+    }
+
+    public async Task DeleteRating(RatingModel rating)
+    {
+        await ratingl.Delete(rating);
+        _allRatings.Remove(rating);
+    }
+
+
+
 
 
     protected override async Task OnInitializedAsync()

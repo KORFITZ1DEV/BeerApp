@@ -22,7 +22,7 @@ public class BeerGroupContext : ModelContext<BeerGroupModel>
 
     public override async Task<List<BeerGroupModel>> GetAll()
     {
-        return await Context.BeerGroups.ToListAsync();
+        return await Context.BeerGroups.AsNoTracking().ToListAsync();
     }
 
     public override async Task Add(BeerGroupModel group)
