@@ -22,7 +22,7 @@ public class RatingContext : ModelContext<RatingModel>
 
     public override async Task<List<RatingModel>> GetAll()
     {
-        return await Context.Ratings.ToListAsync();
+        return await Context.Ratings.AsNoTracking().ToListAsync();
     }
 
     public override async Task Add(RatingModel rating)

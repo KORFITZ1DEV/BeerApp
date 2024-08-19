@@ -53,15 +53,15 @@ namespace ModelLibrary
     {
         public Guid BeerID { get; set; }
         public string BeerName { get; set; } = string.Empty;
-
         public BeerType BeerType { get; set; }
+        public string? Description { get; set; } = string.Empty;
         public AleSubType? AleSubType { get; set; }
         public LagerSubType? LagerSubType { get; set; }
         public SpecialtyHybridSubType? SpecialtyHybridSubType { get; set; }
         public StrongAleSubType? StrongAleSubType { get; set; }
-
-        public string Brewery { get; set; } = string.Empty;
+        public BreweryModel? Brewery { get; set; }
         public List<RatingModel>? Ratings { get; set; }
+        public byte[]? BeerImage { get; set; }
     }
 }
 

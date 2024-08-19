@@ -14,6 +14,7 @@ public static class ServiceCollectionExtention
         services.AddTransient<IBeerGroupLogic, BeerGroupLogic>();
         services.AddTransient<IBeerLoverLogic, BeerLoverLogic>();
         services.AddTransient<IRatingLogic, RatingLogic>();
+        services.AddTransient<IBreweryLogic, BreweryLogic>();
 
         return services;
     }

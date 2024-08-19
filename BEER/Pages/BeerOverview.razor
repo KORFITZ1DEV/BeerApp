@@ -3,71 +3,170 @@
 @using ModelLibrary
 @using BusinessLogic
 @using BusinessLogic.Interfaces
+@using System.Linq.Expressions
 
 @inject IBeerLogic beerl
 @inject IBeerGroupLogic groupl
 @inject IRatingLogic ratingl
 @inject IBeerLoverLogic beerloverl
+@inject IBreweryLogic breweryl
 
 <PageTitle>Beer</PageTitle>
 
-<h1>Beer with best ratings</h1>
-<div class="flex-row">
-    <div class="flex-col">
-        @foreach (var beer in _allbeer)
-        {
-            <div
-                style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf0f1; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
-                <p>@beer.BeerID</p>
-                <p>@beer.BeerName</p>
-                <p>@beer.BeerType </p>
-                <p>@beer.LagerSubType</p>
-                <p>@beer.Brewery</p>
-            </div>
-        }
-        <div class="flex-col">
-            @foreach (var beerLover in _allBeerLovers)
-            {
-                <div
-                    style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf0f1; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
-                    <p>@beerLover.BeerLoverID </p>
-                    <p>@beerLover.BeerLoverName </p>
-                    <p>@beerLover.BeerLoverEmail </p>
-                    <p>@beerLover.BeerGroups </p>
-                    <p>@beerLover.rating</p>
-                </div>
-            }
-        </div>
-        <div class="flex-col">
-            @foreach (var beergroup in _allGroups)
-            {
-                <div
-                    style="display: overflow-y: auto; border: 2px solid #3498db; border-radius: 8px; background-color: #ecf0f1; padding: 20px; margin: 20px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif; text-align: center; line-height: 1.5;">
-                    <p>@beergroup.BeerGroupID </p>
-                    <p>@beergroup.GroupName</p>
+<h1>Beer Overview</h1>
 
-                </div>
-            }
-        </div>
-    </div>
+<div class="tab-container">
+    <button class="tab-button" @onclick="() => ShowSection(Section.Beer)">Beers</button>
+    <button class="tab-button" @onclick="() => ShowSection(Section.BeerLover)">Beer Lovers</button>
+    <button class="tab-button" @onclick="() => ShowSection(Section.BeerGroup)">Beer Groups</button>
+    <button class="tab-button" @onclick="() => ShowSection(Section.Brewery)">Breweries</button>
+    <button class="tab-button" @onclick="() => ShowSection(Section.Rating)">Ratings</button>
 </div>
 
+<div class="content-container">
+    @if (currentSection == Section.Beer)
+    {
+        <div>
+            @foreach (var beer in _allbeer)
+            {
+                <div class="card">
+                    <p>@beer.BeerName</p>
+                    @if (beer.BeerImage != null)
+                    {
+                        <img height="200" width="250" src="data:image/jpeg;base64,@(Convert.ToBase64String(beer.BeerImage))"
+                            alt="Beer Image" />
+                    }
+                    <p>@beer.BeerType</p>
+                    <p>@beer.Description</p>
+                    <p>@beer.LagerSubType</p>
+                    <p>@beer.Brewery</p>
+                    <button type="button" @onclick="(e) => DeleteBeer(beer)" class="delete-button">Delete</button>
+                </div>
+            }
+        </div>
+    }
+    else if (currentSection == Section.BeerLover)
+    {
+        <div>
+            @foreach (var beerLover in _allBeerLovers)
+            {
+                <div class="card">
+                    <p>@beerLover.BeerLoverID</p>
+                    <p>@beerLover.BeerLoverName</p>
+                    <p>@beerLover.BeerLoverEmail</p>
+                    <p>@beerLover.BeerGroups</p>
+                    <p>@beerLover.Ratings</p>
+                    <button type="button" @onclick="(e) => DeleteBeerLover(beerLover)" class="delete-button">Delete</button>
+                </div>
+            }
+        </div>
+    }
+    else if (currentSection == Section.BeerGroup)
+    {
+        <div>
+            @foreach (var beergroup in _allGroups)
+            {
+                <div class="card">
+                    <p>@beergroup.BeerGroupID</p>
+                    <p>@beergroup.GroupName</p>
+                    <button type="button" @onclick="(e) => DeleteGroup(beergroup)" class="delete-button">Delete</button>
+                </div>
+            }
+        </div>
+    }
+    else if (currentSection == Section.Brewery)
+    {
+        <div>
+            @foreach (var brewery in _allBreweries)
+            {
+                <div class="card">
+                    <p>@brewery.BreweryID</p>
+                    <p>@brewery.BreweryName</p>
+                    <p>@brewery.BreweryAddress</p>
+                    <p>@brewery.Country</p>
+                    <button type="button" @onclick="(e) => DeleteBrewery(brewery)" class="delete-button">Delete</button>
+                </div>
+            }
+        </div>
+    }
+    else if (currentSection == Section.Rating)
+    {
+        <div>
+            @foreach (var rating in _allRatings)
+            {
+                <div class="card">
+                    <p>@rating.RatingID</p>
+                    <p>@(rating.Beer != null ? rating.Beer.BeerName : "Beer not available")</p>
+                    <p>@(rating.Taster != null ? rating.Taster.BeerLoverName : "Unknown")</p>
+                    <p>@rating.RatingScore</p>
+                    <p>@rating.RatingDate</p>
+                    <p>@rating.Review</p>
+                    <button type="button" @onclick="(e) => DeleteRating(rating)" class="delete-button">Delete</button>
+                </div>
+            }
+        </div>
+    }
+</div>
 
 @code {
+    private enum Section
+    {
+        Beer,
+        BeerLover,
+        BeerGroup,
+        Brewery,
+        Rating
+    }
+
+    private Section currentSection = Section.Beer;
+
+    private void ShowSection(Section section)
+    {
+        currentSection = section;
+    }
 
     private readonly List<BeerModel> _allbeer = new();
     private readonly List<BeerLoverModel> _allBeerLovers = new();
     private readonly List<BeerGroupModel> _allGroups = new();
+    private readonly List<BreweryModel> _allBreweries = new();
+    private readonly List<RatingModel> _allRatings = new();
 
     protected override async Task OnInitializedAsync()
-    {
-        await LoadData();
-    }
-
-    private async Task LoadData()
     {
         _allBeerLovers.AddRange(await beerloverl.GetAll());
         _allbeer.AddRange(await beerl.GetAll());
         _allGroups.AddRange(await groupl.GetAll());
+        _allBreweries.AddRange(await breweryl.GetAll());
+        _allRatings.AddRange(await ratingl.GetAll());
+    }
+
+    public async Task DeleteBeer(BeerModel beer)
+    {
+        await beerl.Delete(beer);
+        _allbeer.Remove(beer);
+    }
+
+    public async Task DeleteBeerLover(BeerLoverModel beerLover)
+    {
+        await beerloverl.Delete(beerLover);
+        _allBeerLovers.Remove(beerLover);
+    }
+
+    public async Task DeleteGroup(BeerGroupModel group)
+    {
+        await groupl.Delete(group);
+        _allGroups.Remove(group);
+    }
+
+    public async Task DeleteBrewery(BreweryModel brewery)
+    {
+        await breweryl.Delete(brewery);
+        _allBreweries.Remove(brewery);
+    }
+
+    public async Task DeleteRating(RatingModel rating)
+    {
+        await ratingl.Delete(rating);
+        _allRatings.Remove(rating);
     }
 }

@@ -22,7 +22,7 @@ public class BeerLoverContext : ModelContext<BeerLoverModel>
 
     public override async Task<List<BeerLoverModel>> GetAll()
     {
-        return await Context.BeerLovers.ToListAsync();
+        return await Context.BeerLovers.AsNoTracking().ToListAsync();
     }
 
     public override async Task Add(BeerLoverModel beerLover)

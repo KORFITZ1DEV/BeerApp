@@ -13,7 +13,7 @@
     </PackageReference>
   </ItemGroup>
 
-   <ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\BusinessLogicLibrary\BusinessLogicLibrary.csproj" />
   </ItemGroup>
 
